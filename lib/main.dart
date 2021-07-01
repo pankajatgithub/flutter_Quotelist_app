@@ -11,6 +11,36 @@ class QuoteList extends StatefulWidget {
   _QuoteListState createState() => _QuoteListState();
 }
 
+Widget quoteTemplate(Quote){
+  return Card(
+    margin: EdgeInsets.fromLTRB(16.0,16.0,16.0,0.0),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            Quote.text,
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.red[500]
+            ),
+          ),
+          SizedBox(height: 6.0),
+          Text(
+            Quote.author,
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Colors.grey[800]
+            ),
+          )
+
+                ],
+      ),
+    ),
+  );
+}
+
 class _QuoteListState extends State<QuoteList> {
   List<Quote> Quotes = [
     Quote(author:"Dalai Lama" ,text:"“The purpose of our lives is to be happy.”" ),
@@ -30,7 +60,7 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent
       ),
       body: Column(
-        children:Quotes.map((getQuote) =>Text("${getQuote.text} - ${getQuote.author}")).toList(),
+        children:Quotes.map((getQuote) =>quoteTemplate(getQuote)).toList(),
       ),
 
     );
