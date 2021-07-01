@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,21 +12,13 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<String> Quotes = [
-    "“The purpose of our lives is to be happy.” — Dalai Lama",
-    "“Get busy living or get busy dying.” — Stephen King",
-    "“You only live once, but if you do it right, once is enough.” — Mae West",
-    "“Never let the fear of striking out keep you from playing the game.”– Babe Ruth",
-    "“Money and success don’t change people; they merely amplify what is already there.” — Will Smith",
-    "“Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma – which is living with the results of other people’s thinking.” – Steve Jobs",
-    " “Not how long, but how well you have lived is the main thing.” — Seneca",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
-    "“The big lesson in life, baby, is never be scared of anyone or anything.”– Frank Sinatra",
+  List<Quote> Quotes = [
+    Quote(author:"Dalai Lama" ,text:"“The purpose of our lives is to be happy.”" ),
+    Quote(author:" Stephen King" ,text:"“Get busy living or get busy dying.”" ),
+    Quote(author:"Mae West" ,text:"“You only live once, but if you do it right, once is enough.”" ),
+    Quote(author:"Will Smith" ,text:"“Not how long, but how well you have lived is the main thing.”" ),
+    Quote(author:"Seneca" ,text:"“The purpose of our lives is to be happy.”" ),
+    Quote(author:"Frank Sinatra" ,text:"“The big lesson in life, baby, is never be scared of anyone or anything.”" ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,7 +30,7 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent
       ),
       body: Column(
-        children:Quotes.map((Quote) =>Text(Quote) ).toList(),
+        children:Quotes.map((getQuote) =>Text("${getQuote.text} - ${getQuote.author}")).toList(),
       ),
 
     );
