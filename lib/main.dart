@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,35 +12,8 @@ class QuoteList extends StatefulWidget {
   _QuoteListState createState() => _QuoteListState();
 }
 
-Widget quoteTemplate(Quote){
-  return Card(
-    margin: EdgeInsets.fromLTRB(16.0,16.0,16.0,0.0),
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            Quote.text,
-            style: TextStyle(
-              fontSize: 18.0,
-              color: Colors.red[500]
-            ),
-          ),
-          SizedBox(height: 6.0),
-          Text(
-            Quote.author,
-            style: TextStyle(
-              fontSize: 14.0,
-              color: Colors.grey[800]
-            ),
-          )
 
-                ],
-      ),
-    ),
-  );
-}
+
 
 class _QuoteListState extends State<QuoteList> {
   List<Quote> Quotes = [
@@ -53,14 +27,23 @@ class _QuoteListState extends State<QuoteList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+
+      backgroundColor: Colors.grey[500],
       appBar: AppBar(
         title: Text("Awesome Quotes"),
         centerTitle: true,
         backgroundColor: Colors.redAccent
       ),
+
       body: Column(
-        children:Quotes.map((getQuote) =>quoteTemplate(getQuote)).toList(),
+        children:Quotes.map((getQuote) =>QuoteCard(
+            quote:getQuote,
+          delete:(){
+              setState(() {
+                Quotes.remove(getQuote);
+              });
+          }
+        )).toList(),
       ),
 
     );
